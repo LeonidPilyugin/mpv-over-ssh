@@ -1,6 +1,6 @@
 #!/bin/bash
 
-source ~/.local/share/mpv-over-ssh/msettings.sh
+source ~/.local/share/mpv-over-ssh/settings.sh
 
 handler () {
     while true; do
@@ -17,7 +17,7 @@ handler () {
 
 prepare () {
     mkdir -p $(basename $3)
-    ssh $1 "mkfifo $2"
+    ssh $1 "rm $2; mkfifo $2"
 }
 
 finish () {
@@ -30,7 +30,7 @@ run () {
 }
 
 
-HOST_NAME=$0
+HOST_NAME=$1
 
 prepare $HOST_NAME $FIFO_PATH $LOCAL_FILE
 run $HOST_NAME $FIFO_PATH $LOCAL_FILE $COMMAND &
