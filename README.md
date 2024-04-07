@@ -21,6 +21,8 @@ bash uninstall.sh
 
 You need to install scripts both on SSH server and client machines.
 
+Maybe you'll need to add `~/.local/bin` to your `PATH` variable.
+
 # Usage
 Execute `ms.sh` instead of `ssh`. It supports all `ssh` options:
 ```
