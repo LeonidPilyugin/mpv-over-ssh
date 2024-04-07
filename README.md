@@ -5,7 +5,7 @@ Execute mpv on local machine with files on remote from SSH session
 When using Linux virtual console and connected to remote machine you cannot use mpv, because it is impossible to forward framebuffer device.
 
 # Solution
-This repo provides two scripts: `ms.sh` and `ow.sh`. `ms.sh` wraps SSH session and creates a channel to pass files and show them in mpv.
+This repo provides two scripts: `ms.sh` and `ow.sh`. `ms.sh` wraps SSH session and creates a channel to pass files and show them in mpv. `ow.sh` is used on remote machine to select file to show.
 
 # Installation
 To install, execute
@@ -20,6 +20,8 @@ bash uninstall.sh
 ```
 
 You need to install scripts both on SSH server and client machines.
+
+Maybe you'll need to add `~/.local/bin` to your `PATH` variable.
 
 # Usage
 Execute `ms.sh` instead of `ssh`. It supports all `ssh` options:
