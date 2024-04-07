@@ -5,7 +5,6 @@ source ~/.local/share/mpv-over-ssh/settings.sh
 handler () {
     while true; do
         if read line; then
-            echo $COMMAND $3
             scp "$1:$line" $3
             bash -c "$COMMAND $3" &
         fi
@@ -32,7 +31,6 @@ finish () {
 HOST_NAME=$1
 
 prepare $HOST_NAME $FIFO_PATH $LOCAL_FILE
-echo "jobs: $(jobs -l)"
 
 ssh $HOST_NAME "tail -f $FIFO_PATH" > $FIFO_PATH &
 SSH_PID=$!
@@ -40,8 +38,6 @@ SSH_PID=$!
 handler $HOST_NAME $FIFO_PATH $LOCAL_FILE < $FIFO_PATH &
 HANDLER_PID=$!
 
-echo "jobs: $(jobs -l)"
-#read
 ssh $@
 kill $SSH_PID $HANDLER_PID
 finish $HOST_NAME $FIFO_PATH $LOCAL_FILE $COMMAND
