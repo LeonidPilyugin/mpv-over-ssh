@@ -25,12 +25,13 @@ prepare () {
 
     # Create remote FIFO
     #ssh $1 "[ ! -e $2 ] && mkfifo $2"
-    ssh $1 "if [[ ! -e \"~/$FIFO_PATH\" ]]; then mkfifo ~/$FIFO_PATH; fi"
+    ssh $1 "if [[ -e ~/$FIFO_PATH ]]; then rm ~/$FIFO_PATH ~/$FIFO_PATH; fi; mkfifo ~/$FIFO_PATH"
 
     # Create local FIFO
-    if [[ ! -e $HOME/$FIFO_PATH ]]; then
-        mkfifo $HOME/$FIFO_PATH
+    if [[ -e $HOME/$FIFO_PATH ]]; then
+        rm $HOME/$FIFO_PATH
     fi
+    mkfifo $HOME/$FIFO_PATH
 }
 
 finish () {
@@ -53,7 +54,7 @@ ssh $HOST_NAME "tail -f ~/$FIFO_PATH" > $HOME/$FIFO_PATH &
 SSH_PID=$!
 
 # Start reading local FIFO and processing its output
-handler $HOST_NAME < $FIFO_PATH &
+handler $HOST_NAME < $HOME/$FIFO_PATH &
 HANDLER_PID=$!
 
 # Start SSH session
