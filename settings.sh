@@ -8,5 +8,6 @@ LOCAL_FILE="/tmp/mpv-over-ssh/current"
 # FIFO file path
 # FIFO file is created both on local and remote machines
 # It is deleted on ms.sh exit
-FIFO_PATH="$HOME/.local/share/mpv-over-ssh/queue"
+# Path is reliative to user's home directory
+FIFO_PATH=".local/share/mpv-over-ssh/queue"
 
