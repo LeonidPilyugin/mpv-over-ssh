@@ -24,9 +24,9 @@ You need to install scripts both on SSH server and client machines.
 Maybe you'll need to add `~/.local/bin` to your `PATH` variable.
 
 # Usage
-Execute `ms.sh` instead of `ssh`. It supports all `ssh` options:
+Execute `ms.sh` instead of `ssh`. SSH config should be configured to connect by remote machine alias:
 ```
-ms.sh <ssh-options> remote_machine
+ms.sh remote_machine
 ```
 | :exclamation: This script should be executed in Linux virtual console (TTY), not in terminal emulator! Also there should be mpv installed and framebuffer enabled |
 |-----------------------------------------|
