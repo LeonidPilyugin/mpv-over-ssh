@@ -28,8 +28,9 @@ Execute `ms.sh` instead of `ssh`. SSH config should be configured to connect by 
 ```
 ms.sh remote_machine
 ```
-| :exclamation: This script should be executed in Linux virtual console (TTY), not in terminal emulator! Also there should be mpv installed and framebuffer enabled |
-|-----------------------------------------|
+
+> [!IMPORTANT]
+> This script should be executed in Linux virtual console (TTY), not in terminal emulator! Also there should be mpv installed and framebuffer enabled
 
 To show image in mpv, inside `ms.sh` session
 ```
